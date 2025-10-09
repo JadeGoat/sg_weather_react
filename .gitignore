@@ -1,0 +1,11 @@
+# exclude data files
+data/*.csv
+data/*.json
+data/*.png
+
+# exclude python cache folder and env file
+python_src/__pycache__/
+python_src/.env
+
+# exclude python package env folder
+fund_analyzer_env/
