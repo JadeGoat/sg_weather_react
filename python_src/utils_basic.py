@@ -1,3 +1,4 @@
+import re
 import os
 import json
 import yaml
@@ -107,6 +108,44 @@ def map_value(value, mapping):
         if eval(rule["condition"], {}, {"value": value}):
             return rule["label"]
     return "unknown"
+
+# =================================
+# File operations related functions
+# =================================
+def get_files_with_extension(folder_path, ext_name, relative_path=True):
+
+    files_list = []
+    full_folder_path = os.path.join(os.getcwd(), '..', folder_path)
+
+    for filename in os.listdir(full_folder_path):
+        if os.path.isfile(os.path.join(full_folder_path, filename)):
+            ext = os.path.splitext(filename)[1]
+            if ext and ext == ext_name:
+                files_list.append(filename)
+
+    if relative_path:
+        files_list = [f"../{folder_path}/{file}" for file in files_list]
+    else:
+        files_list = [f"{full_folder_path}/{file}" for file in files_list]
+             
+    return files_list
+
+def get_filename_from_path(path, with_ext=True):
+    match = re.search(r'[^\\/]+$', path)
+    if match:
+        filename = match.group()
+        if with_ext:
+            return filename
+        else:
+            return filename.split(".")[0]
+    return None
+
+def get_folder_from_path(path):
+    match = re.match(r'^(.*[\\/])[^\\/]+$', path)
+    if match:
+        folder = match.group(1)
+        return folder
+    return None
 
 # ---------------
 # Processing time
