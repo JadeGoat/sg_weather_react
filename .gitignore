@@ -8,4 +8,4 @@ python_src/__pycache__/
 python_src/.env
 
 # exclude python package env folder
-fund_analyzer_env/
+xxxx_env/
