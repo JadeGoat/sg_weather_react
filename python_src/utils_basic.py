@@ -6,6 +6,7 @@ import time
 import argparse
 import pandas as pd
 from dotenv import load_dotenv
+from functools import wraps
 
 # ======================
 # Load related functions
@@ -30,6 +31,21 @@ def load_config(config_list):
 
     return merged_config
 
+# Registry design
+# ---------------
+load_function_dict = {}
+
+def register_load_function(format):
+    def decorator(fn):
+        @wraps(fn)
+        def wrapper(filename):
+            return fn(filename)
+        
+        load_function_dict[format] = wrapper
+        return wrapper
+    return decorator
+
+@register_load_function("csv")
 def load_csv(filename):
 
     print(f"Loading {filename} from file from data folder")
@@ -40,6 +56,7 @@ def load_csv(filename):
         data = pd.read_csv(csv_filename, index_col=0)
     return data
 
+@register_load_function("json")
 def load_json(filename):
 
     print(f"Loading {filename} from file from data folder")
@@ -52,9 +69,31 @@ def load_json(filename):
     
     return data
 
+# Main load function
+def load_data(filename, format):
+    load_function = load_function_dict.get(format)
+    if load_function is None:
+        raise ValueError(f"No load function found for format: {format}")
+    return load_function(filename)
+
 # ======================
 # Save related functions
 # ======================
+# Registry design
+# ---------------
+save_function_dict = {}
+
+def register_save_function(format):
+    def decorator(fn):
+        @wraps(fn)
+        def wrapper(data, filename):
+            return fn(data, filename)
+        
+        save_function_dict[format] = wrapper
+        return wrapper
+    return decorator
+
+@register_save_function("csv")
 def save_csv(csv_data, filename):
 
     if csv_data is not None:
@@ -62,6 +101,14 @@ def save_csv(csv_data, filename):
         csv_filename = os.path.join(os.getcwd(), '..', 'data', filename)
         csv_data.to_csv(csv_filename)
 
+@register_save_function("text")
+def save_text(text_data, filename):
+    if text_data is not None:
+        text_filename = os.path.join(os.getcwd(), '..', 'data', filename)
+        with open(text_filename, "a", encoding="utf-8") as f:
+            f.write(text_data + "\n")
+
+@register_save_function("json")
 def save_json(json_data, filename):
 
     if json_data is not None:
@@ -70,12 +117,20 @@ def save_json(json_data, filename):
         with open(json_filename, 'w') as f:
             json.dump(json_data, f, indent=4)
 
+@register_save_function("matlabplot")
 def save_matlabplot(plt, filename):
 
     if plt is not None:
         print(f"Saving {filename} to file to images folder")
         plot_filename = os.path.join(os.getcwd(), '..', 'images', filename)
         plt.savefig(plot_filename)
+
+# Main save function
+def save_data(data, filename, format):
+    save_function = save_function_dict.get(format)
+    if save_function is None:
+        raise ValueError(f"No save function found for format: {format}")
+    save_function(data, filename)
 
 # ===============
 # Other functions
