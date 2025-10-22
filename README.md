@@ -5,12 +5,12 @@ Main goal: To
 #### Preparing virtual environment
 ```
 pip install virtualenv
-python -m virtualenv analytics_sg_coe_env
+python -m virtualenv xxxx_env
 ```
 
 #### Installing package into virtual environment
 ```
-.\analytics_sg_coe_env\Scripts\activate
+.\xxxx_env\Scripts\activate
 pip install pyyaml
 pip install python-dotenv
 ```
@@ -34,7 +34,7 @@ xxx_API_TOKEN = <register_xxx_api_key_and_fill_in>
 |  ├─ .env
 |  ├─ utils_basic.py
 |  └─ xxxx.py
-├─ analytics_sg_coe_env
+├─ xxxx_env
 ├─ .gitignore
 └─ README.md
 ```
@@ -42,7 +42,7 @@ xxx_API_TOKEN = <register_xxx_api_key_and_fill_in>
 # Usage
 #### Ensure virtual environment is activate
 ```
-.\fund_analyzer_env\Scripts\activate
+.\xxxx_env\Scripts\activate
 ```
 
 #### Running scripts
