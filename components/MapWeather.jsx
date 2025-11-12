@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import '../css/MapWeather.css'
 const tile_host = import.meta.env.VITE_TILE_HOST;
 const tile_port = import.meta.env.VITE_TILE_PORT;

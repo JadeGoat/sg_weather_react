@@ -14,11 +14,40 @@ const Viewer = () => {
         <Tabs defaultIndex={0}>
           
           <TabList>
-            <Tab>View By Weather</Tab>
+            <Tab>View Local</Tab>
+            <Tab>View Regional</Tab>
           </TabList>
 
           <TabPanel>
-            {/* Main tab - By Weather */}
+            {/* Main tab - View Regional */}
+            <Tabs>
+              <TabList>
+                <Tab>Clouds</Tab>
+                <Tab>Precipitation</Tab>
+                <Tab>Wind Speed</Tab>
+                <Tab>Temperature</Tab>
+                {/* <Tab>Pressure</Tab> */}
+              </TabList>
+
+              {/* Sub tab 1 - Clouds */}
+              <TabPanel></TabPanel>
+
+              {/* Sub tab 1 - Precipitation */}
+              <TabPanel></TabPanel>
+
+              {/* Sub tab 1 - Wind speed */}
+              <TabPanel></TabPanel>
+
+              {/* Sub tab 1 - Temperature */}
+              <TabPanel></TabPanel>
+
+              {/* Sub tab 1 - Pressure */}
+              <TabPanel></TabPanel>
+            </Tabs>
+          </TabPanel>
+
+          <TabPanel>
+            {/* Main tab - View Regional */}
             <Tabs>
               <TabList>
                 <Tab>Clouds</Tab>
