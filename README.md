@@ -1,60 +1,59 @@
 # Introduction
 Main goal: To
 
+# Implementation
+To ....
+
 # Setup
-#### Preparing virtual environment
+#### Installing node packages
+a. Using repo package.json
 ```
-pip install virtualenv
-python -m virtualenv xxxx_env
+npm install
 ```
 
-#### Installing package into virtual environment
+b. Using fresh vite@latest package.json
 ```
-.\xxxx_env\Scripts\activate
-pip install pyyaml
-pip install python-dotenv
+npm install
+npm install express mysql2 cors axios dotenv
+npm install sharp
+npm install chart.js react-chartjs-2
+npm install react-leaflet leaflet leaflet.heat
+npm install react-tabs
 ```
 
 #### Preparing .env file
-Creating .env in python_src folder with the following field
-```
-xxx_API_TOKEN = <register_xxx_api_key_and_fill_in>
-```
+Creating .env in root folder with the following fields
 
-#### Data
-
-
-#### Folder Structure
+IMPORTANT: There must be "VITE_" prefix in the names
 ```
-├─ config
-|  ├─ xxxxx.yaml
-|  └─ xxxx.yaml
-├─ data
-├─ python_src
-|  ├─ .env
-|  ├─ utils_basic.py
-|  └─ xxxx.py
-├─ xxxx_env
-├─ .gitignore
-└─ README.md
+VITE_OPEN_WEATHER_API = <register_openweathermap_api_key_and_fill_in>
+VITE_TILE_HOST = <to_fill_in_database_url>
+VITE_TILE_PORT = <to_fill_in_tile_port>
 ```
 
 # Usage
-#### Ensure virtual environment is activate
+#### Running server
+To read from MySQL database and serves API request
 ```
-.\xxxx_env\Scripts\activate
-```
-
-#### Running scripts
-```
-cd python_src
-python ./xxxx.py 
+node ./scripts/TileServer.js
 ```
 
-Other modes
+#### Running the react client
 ```
-python ./xxxx.py --help
+npm run dev
 ```
 
 # Features Log
-1. xxxxx
+1. Added Weather Map viewable by region's point of view
+
+   <u>Cloud Map</u>
+   ![Alt text](./images/sample_weather_cloud_map.png)
+
+   <u>Precipitation Map</u>
+   ![Alt text](./images/sample_weather_precipitation_map.png)
+
+   <u>Temperature Map</u>
+   ![Alt text](./images/sample_weather_temp_map.png)
+
+   <u>Wind Speed Map</u>
+   ![Alt text](./images/sample_weather_wind_map.png)

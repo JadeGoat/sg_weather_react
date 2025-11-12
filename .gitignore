@@ -1,11 +1,30 @@
-# exclude data files
-data/*.csv
-data/*.json
-data/*.png
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# exclude python cache folder and env file
-python_src/__pycache__/
-python_src/.env
+node_modules
+dist
+dist-ssr
+*.local
 
-# exclude python package env folder
-xxxx_env/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# data folder
+data
+
+# env file
+.env
