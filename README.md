@@ -64,3 +64,8 @@ npm run dev
 
 3. Added normalized heatmap as the raw values are either to small or clamped together in a certain range.
    
+   ![Alt text](./images/sample_weather_local_humidity.png)
+
+   ![Alt text](./images/sample_weather_local_temperature.png)
+
+   ![Alt text](./images/sample_weather_local_wind_speed.png)
