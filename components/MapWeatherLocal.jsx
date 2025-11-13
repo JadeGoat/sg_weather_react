@@ -46,7 +46,6 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
 
     useEffect(() => {
         if (weatherData) {
-            console.log(weatherData)
             setWeatherStationsData(weatherData)
         }
     }, [weatherData]);

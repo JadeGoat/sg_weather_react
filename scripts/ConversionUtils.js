@@ -43,3 +43,17 @@ export function convertWeatherData(data) {
     heatmap_data = heatmap_data.filter(Boolean)
     return { location_data, heatmap_data }
 }
+
+export function normalizeToRange(heatmapValues, minRange = 0.5, maxRange = 1) {
+    const zValues = Object.values(heatmapValues).map(([, , z]) => z);
+    const min = Math.min(...zValues);
+    const max = Math.max(...zValues);
+
+    // Normalize only z
+    const normalized = heatmapValues.map(row => {
+        const norm = minRange + (row[2] - min) / (max - min) * (maxRange - minRange);
+        return [row[0], row[1], norm];
+    });
+
+    return normalized
+  }
