@@ -1,0 +1,33 @@
+import axios from 'axios';
+
+const baseUrl = "https://api-open.data.gov.sg/v2/real-time/api"
+
+export const getAirTemperature = async (year, setData) => {
+    axios.get(`${baseUrl}/air-temperature`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const getRainfall = async (year, setData) => {
+    axios.get(`${baseUrl}/rainfall`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const getRelativeHumidity = async (year, setData) => {
+    axios.get(`${baseUrl}/relative-humidity`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const getWindDirection = async (year, setData) => {
+    axios.get(`${baseUrl}/wind-direction`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const getWindSpeed = async (year, setData) => {
+    axios.get(`${baseUrl}/wind-speed`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}

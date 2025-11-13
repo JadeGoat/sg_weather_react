@@ -1,4 +1,9 @@
 // For pages components
+import ViewWeatherLocalByHumidity from './ViewWeatherLocalByHumidity';
+import ViewWeatherLocalByRainfall from './ViewWeatherLocalByRainfall';
+import ViewWeatherLocalByTemp from './ViewWeatherLocalByTemp';
+import ViewWeatherLocalByWind from './ViewWeatherLocalByWind';
+
 import ViewWeatherByCloud from './ViewWeatherByCloud';
 import ViewWeatherByPrecipitation from './ViewWeatherByPrecipitation';
 import ViewWeatherByTemp from './ViewWeatherByTemp';
@@ -19,30 +24,26 @@ const Viewer = () => {
           </TabList>
 
           <TabPanel>
-            {/* Main tab - View Regional */}
+            {/* Main tab - View Local */}
             <Tabs>
               <TabList>
-                <Tab>Clouds</Tab>
-                <Tab>Precipitation</Tab>
-                <Tab>Wind Speed</Tab>
+                <Tab>Humidity</Tab>
+                <Tab>Rainfall</Tab>
+                <Tab>Wind</Tab>
                 <Tab>Temperature</Tab>
-                {/* <Tab>Pressure</Tab> */}
               </TabList>
 
-              {/* Sub tab 1 - Clouds */}
-              <TabPanel></TabPanel>
+              {/* Sub tab 1 - Humidity */}
+              <TabPanel><ViewWeatherLocalByHumidity/></TabPanel>
 
-              {/* Sub tab 1 - Precipitation */}
-              <TabPanel></TabPanel>
+              {/* Sub tab 2 - Rainfall */}
+              <TabPanel><ViewWeatherLocalByRainfall/></TabPanel>
 
-              {/* Sub tab 1 - Wind speed */}
-              <TabPanel></TabPanel>
+              {/* Sub tab 3 - Wind */}
+              <TabPanel><ViewWeatherLocalByTemp/></TabPanel>
 
-              {/* Sub tab 1 - Temperature */}
-              <TabPanel></TabPanel>
-
-              {/* Sub tab 1 - Pressure */}
-              <TabPanel></TabPanel>
+              {/* Sub tab 4 - Temperature */}
+              <TabPanel><ViewWeatherLocalByWind/></TabPanel>
             </Tabs>
           </TabPanel>
 
