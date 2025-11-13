@@ -1,8 +1,10 @@
 # Introduction
-Main goal: To
+Main goal: To have a holistic view of the weather around SG whether it is using local data or global data
 
 # Implementation
-To ....
+The local view is using api data from https://api-open.data.gov.sg/. The data retrieve is the latest data and returns the readings from the weather stations around SG. Data formatting was performed to fit into the pins map and the heatmap. For the heatmap, it was observed that the raw values are either to small or clamped together in a certain range. Hence normalized was performed within 0.5 to 1 (values less than 0.5 is not very visible) for better understanding of which area are more/less affected.
+
+The regional data is using api data from https://tile.openweathermap.org, the TileServer script is responsible for retrieve the tile map data from the https://tile.openweathermap.org and enhancing before sending to the client react. The tile map data is then overlay with the map. The pressure map is available, but disable as it affects mostly the northern and southern part of the world.
 
 # Setup
 #### Installing node packages
@@ -60,5 +62,5 @@ npm run dev
 
 2. Added Weather Map viewable by local's point of view. Map available in pins map and heatmap.
 
-3. (WIP) To normalized the value of the heatmap.
+3. Added normalized heatmap as the raw values are either to small or clamped together in a certain range.
    
