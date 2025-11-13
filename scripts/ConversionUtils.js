@@ -22,7 +22,7 @@ export function convertWeatherData(data) {
     const map2 = new Map(readings.map(item => [item.stationId, item.value]));
     var location_data = stations.map(item1 => {
         const item2_value = map2.get(item1.id);
-        return item2_value ? { id: item1.id, 
+        return item2_value >= 0 ? { id: item1.id, 
                                 name: item1.name, 
                                 label: `${item2_value} ${readingUnit}`, 
                                 lat: item1.location['latitude'], 
@@ -31,12 +31,13 @@ export function convertWeatherData(data) {
     });
     var heatmap_data = stations.map(item1 => {
         const item2_value = map2.get(item1.id);
-        return item2_value ? [
+        return item2_value >= 0 ? [
                                item1.location['latitude'], 
                                item1.location['longitude'],
                                item2_value
                              ] : null;
     });
+    console.log(location_data)
 
     // Remove empty rows
     location_data = location_data.filter(Boolean)
