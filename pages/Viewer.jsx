@@ -40,10 +40,10 @@ const Viewer = () => {
               <TabPanel><ViewWeatherLocalByRainfall/></TabPanel>
 
               {/* Sub tab 3 - Wind */}
-              <TabPanel><ViewWeatherLocalByTemp/></TabPanel>
+              <TabPanel><ViewWeatherLocalByWind/></TabPanel>
 
               {/* Sub tab 4 - Temperature */}
-              <TabPanel><ViewWeatherLocalByWind/></TabPanel>
+              <TabPanel><ViewWeatherLocalByTemp/></TabPanel>
             </Tabs>
           </TabPanel>
 
