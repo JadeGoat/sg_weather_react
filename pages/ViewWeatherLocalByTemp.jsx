@@ -4,7 +4,7 @@ const ViewWeatherByTemp = () => {
     return (
         <div>
             <MapWeatherLocal centerCoordinate={[1.3558, 103.8254]} 
-                             zoomValue={14}
+                             zoomValue={11}
                              type="air_temp"
             />
         </div>
