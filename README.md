@@ -57,3 +57,8 @@ npm run dev
 
    <u>Wind Speed Map</u>
    ![Alt text](./images/sample_weather_wind_map.png)
+
+2. Added Weather Map viewable by local's point of view. Map available in pins map and heatmap.
+
+3. (WIP) To normalized the value of the heatmap.
+   
