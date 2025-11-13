@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import '../css/MapWeather.css'
+import '../css/MapWeatherRegional.css'
 const tile_host = import.meta.env.VITE_TILE_HOST;
 const tile_port = import.meta.env.VITE_TILE_PORT;
 
-const MapWeather = ({ centerCoordinate, zoomValue, layer, opacity, brightness, saturation, contrast }) => {
+const MapWeatherRegional = ({ centerCoordinate, zoomValue, layer, opacity, brightness, saturation, contrast }) => {
 
   const [tileUrl, setTileUrl] = useState("")
 
@@ -36,7 +36,7 @@ const MapWeather = ({ centerCoordinate, zoomValue, layer, opacity, brightness, s
   }, [layer, brightness, saturation, contrast]);
 
   return ( 
-      <MapContainer className='mapWeatherContainer' center={centerCoordinate} zoom={zoomValue}>
+      <MapContainer className='mapWeatherRegionalContainer' center={centerCoordinate} zoom={zoomValue}>
           <TileLayer
               attribution='&copy; OpenStreetMap contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -51,5 +51,5 @@ const MapWeather = ({ centerCoordinate, zoomValue, layer, opacity, brightness, s
   )
 }
 
-export default MapWeather
+export default MapWeatherRegional
 
