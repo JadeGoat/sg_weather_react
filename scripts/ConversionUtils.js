@@ -24,7 +24,8 @@ export function convertWeatherData(data) {
         const item2_value = map2.get(item1.id);
         return item2_value >= 0 ? { id: item1.id, 
                                 name: item1.name, 
-                                label: `${item2_value} ${readingUnit}`, 
+                                label: `${item2_value} ${readingUnit}`,
+                                value: item2_value,
                                 lat: item1.location['latitude'], 
                                 lon: item1.location['longitude'],
                               } : null;

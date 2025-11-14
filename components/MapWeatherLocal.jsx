@@ -17,24 +17,38 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
     const [legendIconDescList, setLegendIconDescList] = useState()
     const [legendHtml, setLegendHtml] = useState()
     const [isWindData, setIsWindData] = useState(false)
+    const [upperThreshold, setUpperThreshold] = useState(null)
+    const [lowerThreshold, setLowerThreshold] = useState(null)
 
     useEffect(() => {
         if (type == "air_temp") {
-            setLegendIconDescList(["Air Temp"])
+            setLegendIconDescList(["High", "Normal", "Low"])
+            setLegendIconColorList(["-orange", "-green", ""])
+            setUpperThreshold(34)
+            setLowerThreshold(23)
         }
         else if (type == "rainfall") {
-            setLegendIconDescList(["Rainfall"])
+            setLegendIconDescList(["Rain", "Dry"])
+            setLegendIconColorList(["-orange", "-green"])
+            setUpperThreshold(0.001)
+            setLowerThreshold(null)
         }
         else if (type == "relative_humidity") {
-            setLegendIconDescList(["Humidity"])
+            setLegendIconDescList(["High", "Normal", "Low"])
+            setLegendIconColorList(["-orange", "-green", ""])
+            setUpperThreshold(90)
+            setLowerThreshold(60)
         }
         else if (type == "wind_direction") {
-            setLegendIconDescList(["Wind Direction"])
+            
             setLegendIconColorList(["-arrow"])
             setIsWindData(true)
         }
         else if (type == "wind_speed") {
-            setLegendIconDescList(["Wind Speed"])
+            setLegendIconDescList(["High", "Normal", "Low"])
+            setLegendIconColorList(["-orange", "-green", ""])
+            setUpperThreshold(30)
+            setLowerThreshold(5)
         }
     }, [type]);
 
@@ -60,7 +74,9 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
           { weatherStations ? 
             ( isWindData ? 
                 <ArrowsLayer locations={weatherStations}/> :
-                <PinsLayer locations={weatherStations} color="green" />
+                <PinsLayer locations={weatherStations} 
+                           upper_threshold={upperThreshold} 
+                           lower_threshold={lowerThreshold} />
             ) : 
             <></>
           }

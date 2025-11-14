@@ -20,7 +20,7 @@ const ViewWeatherLocalByRainfall = () => {
             const results = convertWeatherData(data)
             setWeatherData(results.location_data)
             setHeatmapPoints(results.heatmap_data)
-            const normalizeData = normalizeToRange(results.heatmap_data)
+            const normalizeData = normalizeToRange(results.heatmap_data, 0, 1)
             setNormalizedHeatmapPoints(normalizeData)
         }
     }, [data]);
