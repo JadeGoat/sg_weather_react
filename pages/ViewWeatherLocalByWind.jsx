@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import MapWeatherLocal from '../components/MapWeatherLocal.jsx'
 import Heatmap from '../components/Heatmap.jsx';
-import { convertWeatherData, normalizeToRange } from '../scripts/ConversionUtils.js'
+import { convertWeatherData, mergeWindData, normalizeToRange } from '../scripts/ConversionUtils.js'
 import { getWindDirection, getWindSpeed } from '../scripts/WeatherApi.js';
 
 const ViewWeatherLocalByWind = () => {
@@ -19,10 +19,6 @@ const ViewWeatherLocalByWind = () => {
     }, []);
 
     useEffect(() => {
-        if (windDirData) {
-            const results = convertWeatherData(windDirData)
-            setWeatherWindDirData(results.location_data)
-        }
         if (windSpeedData) {
             const results = convertWeatherData(windSpeedData)
             setWeatherWindSpeedData(results.location_data)
@@ -30,25 +26,29 @@ const ViewWeatherLocalByWind = () => {
             const normalizeData = normalizeToRange(results.heatmap_data)
             setNormalizedHeatmapPoints(normalizeData)
         }
+        if (windDirData && windSpeedData) {
+            const results = mergeWindData(windDirData, windSpeedData)
+            setWeatherWindDirData(results)
+        }
     }, [windDirData, windSpeedData]);
 
     return (
         <div>
             <h2>Pins Map</h2>
             <h4>Wind Speed</h4>
-            { weatherWindDirData ?
-                <MapWeatherLocal centerCoordinate={[1.3308, 103.8054]} 
-                             zoomValue={11}
-                             type="wind_speed"
-                             weatherData={weatherWindDirData}/>:
-                <p>Loading pins map...</p>
-            }
-            <h4>Wind Direction</h4>
             { weatherWindSpeedData ?
                 <MapWeatherLocal centerCoordinate={[1.3308, 103.8054]} 
                              zoomValue={11}
-                             type="wind_direction"
+                             type="wind_speed"
                              weatherData={weatherWindSpeedData}/>:
+                <p>Loading pins map...</p>
+            }
+            <h4>Wind Direction</h4>
+            { weatherWindDirData ?
+                <MapWeatherLocal centerCoordinate={[1.3308, 103.8054]} 
+                             zoomValue={11}
+                             type="wind_direction"
+                             weatherData={weatherWindDirData}/>:
                 <p>Loading pins map...</p>
             }
             <h2>HeatMap</h2>

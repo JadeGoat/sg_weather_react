@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import ArrowsLayer from './ArrowsLayer.jsx';
 import PinsLayer from './PinsLayer.jsx';
 import PinsLegendLayer from './LegendLayer.jsx';
 import { createLegend } from '../scripts/MapUtils.js'
@@ -12,9 +13,10 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
     const [weatherStations, setWeatherStationsData] = useState()
 
     // Customize legend here
-    const [legendIconColorList, _] = useState(["-green"])
+    const [legendIconColorList, setLegendIconColorList] = useState(["-green"])
     const [legendIconDescList, setLegendIconDescList] = useState()
     const [legendHtml, setLegendHtml] = useState()
+    const [isWindData, setIsWindData] = useState(false)
 
     useEffect(() => {
         if (type == "air_temp") {
@@ -28,12 +30,11 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
         }
         else if (type == "wind_direction") {
             setLegendIconDescList(["Wind Direction"])
+            setIsWindData(true)
         }
         else if (type == "wind_speed") {
+            setLegendIconColorList("-arrow")
             setLegendIconDescList(["Wind Speed"])
-        }
-        else if (type == "wind") {
-            setLegendIconDescList(["Wind Direction", "Wind Speed"])
         }
     }, [type]);
 
@@ -56,8 +57,12 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
               attribution='&copy; OpenStreetMap contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {weatherStations ? 
-            <PinsLayer locations={weatherStations} color="green" /> : <></>
+          { weatherStations ? 
+            ( isWindData ? 
+                <ArrowsLayer locations={weatherStations}/> :
+                <PinsLayer locations={weatherStations} color="green" />
+            ) : 
+            <></>
           }
           <PinsLegendLayer legendHtml={legendHtml} />
       </MapContainer>

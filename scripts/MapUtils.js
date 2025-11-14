@@ -13,6 +13,22 @@ export function createDivIcon(iconColor, iconWidth, iconHeight) {
     return icon
 }
 
+export function createArrowIcon(directionDeg, speed, iconWidth, iconHeight) {
+  return divIcon({
+    className: "wind-arrow-icon",
+    html: `
+      <div style="
+        transform: rotate(${directionDeg-90}deg);
+        font-size: ${14 + speed / 2}px;
+        color: blue;">
+        ➤
+      </div>
+    `,
+    iconSize: [iconWidth, iconHeight],
+    iconAnchor: [iconWidth / 2, iconHeight / 2]
+  });
+};
+
 function createIcon(iconDesc, multiplier = 1) {
     return icon({
         iconUrl: '../images/marker-icon' + iconDesc + '.png',
