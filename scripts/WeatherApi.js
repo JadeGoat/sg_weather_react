@@ -31,3 +31,21 @@ export const getWindSpeed = async (year, setData) => {
          .then(response => setData(response.data))
          .catch(error => console.error('Error retrieving data:', error))
 }
+
+export const get2HourForecast = async (setData) => {
+    axios.get(`${baseUrl}/two-hr-forecast`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const get24HourForecast = async (setData) => {
+    axios.get(`${baseUrl}/twenty-four-hr-forecast`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const get4DayForecast = async (setData) => {
+    axios.get(`${baseUrl}/four-day-outlook`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
