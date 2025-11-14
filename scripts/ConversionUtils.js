@@ -49,7 +49,6 @@ export function mergeWindData(windDirData, windSpeedData) {
     // Get the two list of the weather data
     const stationsWindDir = windDirData['data']['stations']
     const readingsWindDir = windDirData['data']['readings'][0]['data']
-    const stationsWindSpeed = windDirData['data']['stations']
     const readingsWindSpeed = windSpeedData['data']['readings'][0]['data']
     const readingUnit = windSpeedData['data']['readingUnit']
 
@@ -64,17 +63,9 @@ export function mergeWindData(windDirData, windSpeedData) {
                                      lon: item.location['longitude'],
                                    } : null;
     }).filter(Boolean);
-    // Extract wind speed data from raw data
-    var mapWindSpeed = new Map(readingsWindSpeed.map(item => [item.stationId, item.value]));
-    var locWindSpeed = stationsWindSpeed.map(item => {
-        const windSpeedValue = mapWindSpeed.get(item.id);
-        return windSpeedValue >= 0 ? { id: item.id, 
-                                       speed: windSpeedValue
-                                     } : null;
-    }).filter(Boolean);
 
-    // Combined using the station id as matching id
-    mapWindSpeed = new Map(locWindSpeed.map(item => [item.id, item.speed]));
+    // Combined wind speed using the station id as matching id
+    const mapWindSpeed = new Map(readingsWindSpeed.map(item => [item.stationId, item.value]));
     const combinedWindData = locWindDir.map(item => {
         const windSpeedValue = mapWindSpeed.get(item.id);
         return windSpeedValue >= 0 ? { ...item,
