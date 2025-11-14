@@ -14,8 +14,6 @@ const ViewWeatherLocalBy24HrForecast = ({ forecastMode }) => {
 
     useEffect(() => {
         if (data) {
-            console.log(forecastMode)
-            console.log(data['data']['records'][0]['periods'])
             setForecast(data['data']['records'][0]['periods'])
         }
     }, [data]);
