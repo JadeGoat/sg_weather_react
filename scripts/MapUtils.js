@@ -19,7 +19,7 @@ export function createArrowIcon(directionDeg, speed, iconWidth, iconHeight) {
     html: `
       <div style="
         transform: rotate(${directionDeg-90}deg);
-        font-size: ${14 + speed / 2}px;
+        font-size: ${14 + speed}px;
         color: blue;">
         ➤
       </div>
