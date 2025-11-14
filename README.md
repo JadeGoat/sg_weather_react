@@ -77,3 +77,5 @@ npm run dev
 
    <u>Wind speed & direction Map</u>
    ![Alt text](./images/sample_weather_local_wind_speed.png)
+
+3. Modified pins map to include upper and lower threshold and set the rainfall to normalize within 0 to 1. Shown in the above updated images
