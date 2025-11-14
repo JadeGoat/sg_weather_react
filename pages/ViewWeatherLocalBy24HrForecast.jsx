@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { get24HourForecast } from '../scripts/WeatherApi.js';
 import { formatIsoTimestamp } from '../scripts/DateFormatUtils.js'
 
-const ViewWeatherLocalBy24HrForecast = ({ forecastMode }) => {
+const ViewWeatherLocalBy24HrForecast = ( ) => {
 
     const [data, setData] = useState()
     const [forecast, setForecast] = useState(null);
