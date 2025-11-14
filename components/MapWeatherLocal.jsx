@@ -30,10 +30,10 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
         }
         else if (type == "wind_direction") {
             setLegendIconDescList(["Wind Direction"])
+            setLegendIconColorList(["-arrow"])
             setIsWindData(true)
         }
         else if (type == "wind_speed") {
-            setLegendIconColorList("-arrow")
             setLegendIconDescList(["Wind Speed"])
         }
     }, [type]);
