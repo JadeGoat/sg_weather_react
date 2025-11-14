@@ -1,4 +1,8 @@
 // For pages components
+import ViewWeatherLocalBy2HrForecast from './ViewWeatherLocalBy2HrForecast';
+import ViewWeatherLocalBy24HrForecast from './ViewWeatherLocalBy24HrForecast';
+import ViewWeatherLocalBy4DayForecast from './ViewWeatherLocalBy4DayForecast';
+
 import ViewWeatherLocalByHumidity from './ViewWeatherLocalByHumidity';
 import ViewWeatherLocalByRainfall from './ViewWeatherLocalByRainfall';
 import ViewWeatherLocalByTemp from './ViewWeatherLocalByTemp';
@@ -19,9 +23,30 @@ const Viewer = () => {
         <Tabs defaultIndex={0}>
           
           <TabList>
+            <Tab>View Forecast</Tab>
             <Tab>View Local</Tab>
             <Tab>View Regional</Tab>
           </TabList>
+
+          <TabPanel>
+            {/* Main tab - View Local */}
+            <Tabs>
+              <TabList>
+                <Tab>2 Hour Forecast</Tab>
+                <Tab>24 Hour Forecast</Tab>
+                <Tab>4 Days Forecast</Tab>
+              </TabList>
+
+              {/* Sub tab 1 - 2 Hour Forecast */}
+              <TabPanel><ViewWeatherLocalBy2HrForecast/></TabPanel>
+
+              {/* Sub tab 1 - 24 Hour Forecast */}
+              <TabPanel><ViewWeatherLocalBy24HrForecast/></TabPanel>
+
+              {/* Sub tab 1 - 4 Day Forecast */}
+              <TabPanel><ViewWeatherLocalBy4DayForecast/></TabPanel>
+            </Tabs>
+          </TabPanel>
 
           <TabPanel>
             {/* Main tab - View Local */}
