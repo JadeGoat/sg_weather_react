@@ -19,6 +19,7 @@ npm install
 npm install express cors axios dotenv
 npm install sharp
 npm install chart.js react-chartjs-2
+npm install framer-motion
 npm install react-leaflet leaflet leaflet.heat
 npm install react-tabs
 ```
@@ -60,7 +61,7 @@ npm run dev
    <u>Wind Speed Map</u>
    ![Alt text](./images/sample_weather_wind_map.png)
 
-2. Added Weather Map viewable by local's point of view. Map available in pins map and heatmap.
+2. Added Weather Map viewable by local's point of view using data from data.gov.sg (NEA). Map available in pins map and heatmap.
 
 3. Added normalized heatmap as the raw values are either to small or clamped together in a certain range.
    
@@ -80,4 +81,8 @@ npm run dev
 
 5. Modified pins map to include upper and lower threshold and set the rainfall to normalize within 0 to 1. Shown in the above updated images
 
-6. Added forecast for two hour, twenty-four hour and four day 
+6. Added forecast for two hour, twenty-four hour and four day using data from data.gov.sg (NEA) 
+
+7. Added rolling text for flood alert using api from data.gov.sg (PUB)
+
+8. Added placeholder for safety (Wet Bulb Globe Temperature and Lightning observation)
