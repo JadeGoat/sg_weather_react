@@ -19,8 +19,8 @@ const FloodAlertText = () => {
         if (data) {
 
             // Uncomment this and comment the next line after to test
-            const records = getSimulatedAlert()["data"]["records"] 
-            //const records = data["data"]["records"]
+            //const records = getSimulatedAlert()["data"]["records"] 
+            const records = data["data"]["records"]
             
             // Extract alert from data
             const results = records.map(record => {
