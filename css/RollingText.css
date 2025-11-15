@@ -1,0 +1,10 @@
+.rollingTextDiv {
+    display: inline-flex;
+    gap: 0.02em;
+    will-change: transform, opacity;
+}
+
+.rollingTextMotion {
+    display: inline-block; 
+    transform-origin: 50% 50%
+}

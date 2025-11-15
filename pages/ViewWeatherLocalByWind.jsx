@@ -3,6 +3,7 @@ import MapWeatherLocal from '../components/MapWeatherLocal.jsx'
 import Heatmap from '../components/Heatmap.jsx';
 import { convertWeatherData, mergeWindData, normalizeToRange } from '../scripts/ConversionUtils.js'
 import { getWindDirection, getWindSpeed } from '../scripts/WeatherApi.js';
+import '../css/LocalWeather.css'
 
 const ViewWeatherLocalByWind = () => {
 
@@ -33,39 +34,51 @@ const ViewWeatherLocalByWind = () => {
     }, [windDirData, windSpeedData]);
 
     return (
-        <div>
-            <h2>Pins Map</h2>
-            <h4>Wind Speed</h4>
-            { weatherWindSpeedData ?
-                <MapWeatherLocal centerCoordinate={[1.3308, 103.8054]} 
-                             zoomValue={11}
-                             type="wind_speed"
-                             weatherData={weatherWindSpeedData}/>:
-                <p>Loading pins map...</p>
-            }
-            <h4>Wind Direction</h4>
-            { weatherWindDirData ?
-                <MapWeatherLocal centerCoordinate={[1.3308, 103.8054]} 
-                             zoomValue={11}
-                             type="wind_direction"
-                             weatherData={weatherWindDirData}/>:
-                <p>Loading pins map...</p>
-            }
-            <h2>HeatMap</h2>
-            <h4>Normalized values</h4>
-            { normalizedHeatmapPoints ?
-                <Heatmap centerCoordinate={[1.3308, 103.8054]} 
-                         zoomValue={11}
-                         heatmapCoordinates={normalizedHeatmapPoints}/>:
-                <p>Loading heatmap...</p>
-            }
-            <h4>Raw values</h4>
-            { heatmapPoints ?
-                <Heatmap centerCoordinate={[1.3308, 103.8054]} 
-                         zoomValue={11}
-                         heatmapCoordinates={heatmapPoints}/>:
-                <p>Loading heatmap...</p>
-            }
+        <div className='localWeatherContainer'>
+            <div>
+                <h2>Pins Map</h2>
+                <div>
+                    <h4>Wind Speed</h4>
+                    { weatherWindSpeedData ?
+                        <MapWeatherLocal centerCoordinate={[1.3308, 103.8054]} 
+                                    zoomValue={11}
+                                    type="wind_speed"
+                                    weatherData={weatherWindSpeedData}/>:
+                        <p>Loading pins map...</p>
+                    }
+                </div>
+                <div>
+                    <h4>Wind Direction</h4>
+                    { weatherWindDirData ?
+                        <MapWeatherLocal centerCoordinate={[1.3308, 103.8054]} 
+                                    zoomValue={11}
+                                    type="wind_direction"
+                                    weatherData={weatherWindDirData}/>:
+                        <p>Loading pins map...</p>
+                    }
+                </div>
+            </div>
+            <div>
+                <h2>HeatMap</h2>
+                <div>
+                    <h4>Normalized values</h4>
+                    { normalizedHeatmapPoints ?
+                        <Heatmap centerCoordinate={[1.3308, 103.8054]} 
+                                zoomValue={11}
+                                heatmapCoordinates={normalizedHeatmapPoints}/>:
+                        <p>Loading heatmap...</p>
+                    }
+                </div>
+                <div>
+                    <h4>Raw values</h4>
+                    { heatmapPoints ?
+                        <Heatmap centerCoordinate={[1.3308, 103.8054]} 
+                                zoomValue={11}
+                                heatmapCoordinates={heatmapPoints}/>:
+                        <p>Loading heatmap...</p>
+                    }
+                </div>
+            </div>
         </div>
     )
 }
