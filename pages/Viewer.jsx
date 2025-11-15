@@ -15,6 +15,9 @@ import ViewWeatherByWind from './ViewWeatherByWind';
 import ViewWeatherByPressure from './ViewWeatherByPressure';
 
 import FloodAlertText from '../components/FloodAlertText';
+import ViewWeatherLocalByWBGT from './ViewWeatherLocalByWBGT';
+import ViewWeatherLocalByLightning from './ViewWeatherLocalByLightning';
+
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
@@ -34,6 +37,7 @@ const Viewer = () => {
               <Tab>View Forecast</Tab>
               <Tab>View Local</Tab>
               <Tab>View Regional</Tab>
+              <Tab>View Safety</Tab>
             </TabList>
 
             <TabPanel>
@@ -105,6 +109,22 @@ const Viewer = () => {
 
                 {/* Sub tab 5 - Pressure */}
                 {/* <TabPanel><ViewWeatherByPressure/></TabPanel> */}
+              </Tabs>
+            </TabPanel>
+
+            <TabPanel>
+              {/* Main tab - View Safely */}
+              <Tabs>
+                <TabList>
+                  <Tab>2 Hour Forecast</Tab>
+                  <Tab>24 Hour Forecast</Tab>
+                </TabList>
+
+                {/* Sub tab 1 -  Forecast */}
+                <TabPanel><ViewWeatherLocalByWBGT/></TabPanel>
+
+                {/* Sub tab 1 -  Forecast */}
+                <TabPanel><ViewWeatherLocalByLightning/></TabPanel>
               </Tabs>
             </TabPanel>
           </Tabs>

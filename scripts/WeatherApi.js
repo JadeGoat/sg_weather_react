@@ -55,3 +55,15 @@ export const getFloodAlerts = async (setData) => {
          .then(response => setData(response.data))
          .catch(error => console.error('Error retrieving data:', error))
 }
+
+export const getWBGTObservations = async (setData) => {
+    axios.get(`${baseUrl}/weather?api=wbgt`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const getLightningObservations = async (setData) => {
+    axios.get(`${baseUrl}/weather?api=lightning`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
