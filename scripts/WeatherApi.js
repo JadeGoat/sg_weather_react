@@ -49,3 +49,9 @@ export const get4DayForecast = async (setData) => {
          .then(response => setData(response.data))
          .catch(error => console.error('Error retrieving data:', error))
 }
+
+export const getFloodAlerts = async (setData) => {
+    axios.get(`${baseUrl}/weather/flood-alerts`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
