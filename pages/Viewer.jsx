@@ -17,6 +17,8 @@ import ViewWeatherByPressure from './ViewWeatherByPressure';
 import FloodAlertText from '../components/FloodAlertText';
 import ViewWeatherLocalByWBGT from './ViewWeatherLocalByWBGT';
 import ViewWeatherLocalByLightning from './ViewWeatherLocalByLightning';
+import ViewWeatherLocalByAirQuality from './ViewWeatherLocalByAirQuality';
+import ViewWeatherLocalByUVIndex from './ViewWeatherLocalByUVIndex';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -118,13 +120,21 @@ const Viewer = () => {
                 <TabList>
                   <Tab>WBGT Observations</Tab>
                   <Tab>Lightning Observations</Tab>
+                  <Tab>Air Quality</Tab>
+                  <Tab>Ultraviolet Index</Tab>
                 </TabList>
 
-                {/* Sub tab 1 -  Forecast */}
+                {/* Sub tab 1 - WBGT Observations */}
                 <TabPanel><ViewWeatherLocalByWBGT/></TabPanel>
 
-                {/* Sub tab 1 -  Forecast */}
+                {/* Sub tab 2 - Lightning Observations */}
                 <TabPanel><ViewWeatherLocalByLightning/></TabPanel>
+
+                {/* Sub tab 3 - Air Quality (PM2.5, PMI) */}
+                <TabPanel><ViewWeatherLocalByAirQuality/></TabPanel>
+
+                {/* Sub tab 4 - Ultraviolet Index */}
+                <TabPanel><ViewWeatherLocalByUVIndex/></TabPanel>
               </Tabs>
             </TabPanel>
           </Tabs>

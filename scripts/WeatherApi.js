@@ -67,3 +67,21 @@ export const getLightningObservations = async (setData) => {
          .then(response => setData(response.data))
          .catch(error => console.error('Error retrieving data:', error))
 }
+
+export const getAirQualityPm25 = async (setData) => {
+    axios.get(`${baseUrl}/pm25`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const getAirQualityPsi = async (setData) => {
+    axios.get(`${baseUrl}/psi`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}
+
+export const getUltravioletIndex = async (setData) => {
+    axios.get(`${baseUrl}/uv`)
+         .then(response => setData(response.data))
+         .catch(error => console.error('Error retrieving data:', error))
+}

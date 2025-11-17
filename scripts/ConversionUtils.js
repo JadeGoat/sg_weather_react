@@ -1,4 +1,3 @@
-
 export function convertWBGTData(data) {
     const readings = data['data']['records'][0]['item']['readings']
     const location_data = readings.map(item => ({ 
