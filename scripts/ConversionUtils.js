@@ -1,4 +1,23 @@
 
+export function convertWBGTData(data) {
+    const readings = data['data']['records'][0]['item']['readings']
+    const location_data = readings.map(item => ({ 
+                                                  id: item.station.id, 
+                                                  name: item.station.name, 
+                                                  label: `${item.wbgt} (${item.heatStress})`,
+                                                  value: item.wbgt,
+                                                  category: item.heatStress,
+                                                  lat: item.location.latitude,
+                                                  lon: item.location.longitude
+                                                }
+    ));
+    const heatmap_data = readings.map(item => ([ item.location.latitude, 
+                                                 item.location.longitude,
+                                                 item.wbgt
+                                               ]
+    ));
+    return { location_data, heatmap_data }
+}
 
 export function convertWeatherData(data) {
 
@@ -22,19 +41,20 @@ export function convertWeatherData(data) {
     const map2 = new Map(readings.map(item => [item.stationId, item.value]));
     var location_data = stations.map(item1 => {
         const item2_value = map2.get(item1.id);
-        return item2_value >= 0 ? { id: item1.id, 
-                                name: item1.name, 
-                                label: `${item2_value} ${readingUnit}`,
-                                value: item2_value,
-                                lat: item1.location['latitude'], 
-                                lon: item1.location['longitude'],
-                              } : null;
+        return item2_value >= 0 ? { 
+                                    id: item1.id, 
+                                    name: item1.name, 
+                                    label: `${item2_value} ${readingUnit}`,
+                                    value: item2_value,
+                                    lat: item1.location.latitude, 
+                                    lon: item1.location.longitude,
+                                  } : null;
     });
     var heatmap_data = stations.map(item1 => {
         const item2_value = map2.get(item1.id);
         return item2_value >= 0 ? [
-                               item1.location['latitude'], 
-                               item1.location['longitude'],
+                               item1.location.latitude, 
+                               item1.location.longitude,
                                item2_value
                              ] : null;
     });
@@ -57,11 +77,12 @@ export function mergeWindData(windDirData, windSpeedData) {
     const mapWindDir = new Map(readingsWindDir.map(item => [item.stationId, item.value]));
     var locWindDir = stationsWindDir.map(item => {
         const windDirValue = mapWindDir.get(item.id);
-        return windDirValue >= 0 ? { id: item.id, 
+        return windDirValue >= 0 ? { 
+                                     id: item.id, 
                                      name: item.name, 
                                      direction: windDirValue, 
-                                     lat: item.location['latitude'], 
-                                     lon: item.location['longitude'],
+                                     lat: item.location.latitude, 
+                                     lon: item.location.longitude,
                                    } : null;
     }).filter(Boolean);
 

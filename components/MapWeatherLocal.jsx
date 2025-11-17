@@ -50,6 +50,10 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
             setUpperThreshold(30)
             setLowerThreshold(5)
         }
+        else if (type == "wbgt") {
+            setLegendIconDescList(["High", "Moderate", "Low"])
+            setLegendIconColorList(["-orange", "-green", ""])
+        }
     }, [type]);
 
     useEffect(() => {

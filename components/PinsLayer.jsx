@@ -15,8 +15,18 @@ const PinsLayer = ( {locations, upper_threshold, lower_threshold} ) => {
             <Marker key={idx} 
                     position={[loc.lat, loc.lon]}
                     // Customize pins here
-                    icon={(loc.value >= upper_threshold) ? orangeIcon : 
-                          (lower_threshold && loc.value <= lower_threshold) ? defaultIcon : greenIcon }
+                    icon={ loc.category ? 
+                              // Use category field if present
+                              (
+                                (loc.category == 'High') ? orangeIcon : 
+                                (loc.category == 'Moderate') ? defaultIcon : greenIcon 
+                              ):
+                              // Otherwise use upper and lower threshold
+                              (
+                                (loc.value >= upper_threshold) ? orangeIcon : 
+                                (lower_threshold && loc.value <= lower_threshold) ? defaultIcon : greenIcon 
+                              )
+                         }
             > 
               { loc.name ?
                   <Popup>{loc.name}<br/>{loc.label}</Popup> :
