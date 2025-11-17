@@ -2,9 +2,32 @@
 Main goal: To have a holistic view of the weather around SG whether it is using local data or global data
 
 # Implementation
+### Local view
 The local view is using api data from https://api-open.data.gov.sg/. The data retrieve is the latest data and returns the readings from the weather stations around SG. Data formatting was performed to fit into the pins map and the heatmap. For the heatmap, it was observed that the raw values are either to small or clamped together in a certain range. Hence normalized was performed within 0.5 to 1 (values less than 0.5 is not very visible) for better understanding of which area are more/less affected. It is to be use together with raw values, as sometime normalized heatmap has no meaning (eg. no rainfall across SG)
 
-The regional data is using api data from https://tile.openweathermap.org, the TileServer script is responsible for retrieve the tile map data from the https://tile.openweathermap.org and enhancing before sending to the client react. The tile map data is then overlay with the map. The pressure map is available, but disable as it affects mostly the northern and southern part of the world.
+Weather readings includes
+- Humidity (which measures the amount of water vapor in the air)
+- Rainfall (which measures specific type of precipitation)
+- Wind (Both Speed and Direction)
+- Temperature
+
+Forecast includes
+- 2 Hour forecast
+- 24 Hour forecast
+- 4 Days forecast
+
+Safety readings includes
+- Wet Bulb Globe Temperature (WBGT) observations which measures heat stress assessment
+- Lightning observations
+
+### Regional view
+The regional view is using api data from https://tile.openweathermap.org, the TileServer script is responsible for retrieve the tile map data from the https://tile.openweathermap.org and enhancing before sending to the client react. The tile map data is then overlay with the map. The pressure map is available, but disable as it affects mostly the northern and southern part of the world.
+
+Weather readings includes
+- Clouds
+- Precipitation (which measures all forms of water that fall from the atmosphere)
+- Wind Speed
+- Temperature
 
 # Setup
 #### Installing node packages
@@ -83,6 +106,22 @@ npm run dev
 
 6. Added forecast for two hour, twenty-four hour and four day using data from data.gov.sg (NEA) 
 
+   <u>Forecast 2 Hour</u>
+   ![Alt text](./images/sample_weather_local_forecast_2hr.png)
+
+   <u>Forecast 24 Hour</u>
+   ![Alt text](./images/sample_weather_local_forecast_24hr.png)
+
+   <u>Forecast 4 Days</u>
+   ![Alt text](./images/sample_weather_local_forecast_4days.png)
+
 7. Added rolling text for flood alert using api from data.gov.sg (PUB)
 
-8. Added placeholder for safety (Wet Bulb Globe Temperature and Lightning observation)
+8. Added Weather Map viewable by safety using data from data.gov.sg (NEA) in both Wet Bulb Globe Temperature (WBGT) and Lightning observation
+
+   <u>WBGT Observation Map</u>
+   ![Alt text](./images/sample_weather_local_wgbt.png)
+
+   <u>Lightning Observation Map</u>
+   ![Alt text](./images/sample_weather_local_lightning.png)
+   
