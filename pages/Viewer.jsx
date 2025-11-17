@@ -39,7 +39,7 @@ const Viewer = () => {
               <Tab>View Regional</Tab>
               <Tab>View Safety</Tab>
             </TabList>
-
+            
             <TabPanel>
               {/* Main tab - View Local */}
               <Tabs>
@@ -116,8 +116,8 @@ const Viewer = () => {
               {/* Main tab - View Safely */}
               <Tabs>
                 <TabList>
-                  <Tab>2 Hour Forecast</Tab>
-                  <Tab>24 Hour Forecast</Tab>
+                  <Tab>WBGT Observations</Tab>
+                  <Tab>Lightning Observations</Tab>
                 </TabList>
 
                 {/* Sub tab 1 -  Forecast */}

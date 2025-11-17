@@ -21,15 +21,30 @@ export function convertWBGTData(data) {
 
 export function convertLightningData(data) {
     const readings = data['data']['records'][0]['item']['readings']
-    const location_data = readings.map((item, index) => ({ 
-                                                  id: index, 
-                                                  name: item.text, 
-                                                  value: item.type,
-                                                  lat: item.location.latitude,
-                                                  lon: item.location.longitude
-                                                }
-    ));
-    return location_data
+    const location_data = readings.map((item, index) => {
+        const highLowValue = item.type == "C" ? 'Low' : 'High'
+        return { 
+            id: index, 
+            name: item.text, 
+            value: item.type,
+            category: highLowValue,
+            lat: item.location.latitude,
+            lon: item.location.longitude
+        }
+    });
+    const location_high_value_data = readings.map((item, index) => {
+        const highLowValue = (item.type == "C") ? 'Low' :
+                             (item.type == "G") ? 'High': 'Others'
+        return item.type != "C" ? { 
+                                    id: index, 
+                                    name: item.text, 
+                                    value: item.type,
+                                    category: highLowValue,
+                                    lat: item.location.latitude,
+                                    lon: item.location.longitude
+                                }: null;
+    }).filter(Boolean);
+    return { location_data, location_high_value_data }
 }
 
 export function convertWeatherData(data) {
