@@ -93,15 +93,12 @@ npm run dev
 3. Added normalized heatmap as the raw values are either to small or clamped together in a certain range.
    
    <u>Humidity Map</u>
-
    ![Alt text](./images/sample_weather_local_humidity.png)
 
    <u>Rainfall Map</u>
-
    ![Alt text](./images/sample_weather_local_rainfall.png)
 
    <u>Temperature Map</u>
-   
    ![Alt text](./images/sample_weather_local_temperature.png)
 
 4. Modified wind direction to include arrow head instead of pins
