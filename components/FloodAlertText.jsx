@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import RollingText from '../components/RollingText.jsx';
+// Uncomment this and comment the next line after to test
 import { getFloodAlerts } from '../scripts/WeatherApi.js';
-import { getSimulatedAlert } from '../scripts/TestData.js';
+//import { getFloodAlerts } from '../scripts/MockWeatherData.js';
 import '../css/FloodAlertDiv.css'
 
 const FloodAlertText = () => {
@@ -16,10 +17,9 @@ const FloodAlertText = () => {
     }, []);
 
     useEffect(() => {
+        console.log(data)
         if (data) {
-
-            // Uncomment this and comment the next line after to test
-            //const records = getSimulatedAlert()["data"]["records"] 
+            
             const records = data["data"]["records"]
             
             // Extract alert from data

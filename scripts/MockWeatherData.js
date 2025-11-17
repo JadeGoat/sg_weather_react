@@ -1,6 +1,6 @@
 
-export function getSimulatedAlert() {
-    return {
+export function getFloodAlerts(setData) {
+    const mockData = {
         "code": 0,
         "data": {
             "records": [
@@ -48,4 +48,5 @@ export function getSimulatedAlert() {
             },
             "errorMsg": ""
         }
+        setData(mockData)
     }
