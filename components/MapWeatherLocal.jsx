@@ -40,7 +40,6 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
             setLowerThreshold(60)
         }
         else if (type == "wind_direction") {
-            
             setLegendIconColorList(["-arrow"])
             setIsWindData(true)
         }
@@ -51,6 +50,10 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
             setLowerThreshold(5)
         }
         else if (type == "wbgt") {
+            // Note if using threshold instead of category
+            // < 25	    Low	        Normal activity
+            // 25–28	Moderate	Increase hydration, monitor vulnerable individuals
+            // 28–30	High	    Shorten work/rest cycles, limit strenuous activity
             setLegendIconDescList(["High", "Moderate", "Low"])
             setLegendIconColorList(["-orange", "-green", ""])
         }

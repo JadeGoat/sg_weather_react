@@ -23,10 +23,6 @@ const ViewWeatherLocalByWBGT = () => {
             setHeatmapPoints(results.heatmap_data)
             const normalizeData = normalizeToRange(results.heatmap_data)
             setNormalizedHeatmapPoints(normalizeData)
-
-            //< 25	    Low	        Normal activity
-            //25–28	    Moderate	Increase hydration, monitor vulnerable individuals
-            //28–30	    High	    Shorten work/rest cycles, limit strenuous activity
         }
     }, [data]);
 
