@@ -3,7 +3,7 @@ import MapWeatherLocal from '../components/MapWeatherLocal.jsx'
 import Heatmap from '../components/Heatmap.jsx';
 import { convertWeatherData, normalizeToRange } from '../scripts/ConversionUtils.js'
 import { getAirTemperature } from '../scripts/WeatherApi.js';
-import '../css/LocalWeather.css'
+import '../css/ViewWeatherByLocal.css'
 
 const ViewWeatherByTemp = () => {
 

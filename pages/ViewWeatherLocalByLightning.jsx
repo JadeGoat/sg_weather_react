@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getLightningObservations } from '../scripts/WeatherApi.js';
+import '../css/ViewWeatherByLocal.css'
 
 const ViewWeatherLocalByLightning = () => {
 

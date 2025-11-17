@@ -3,7 +3,7 @@ import MapWeatherLocal from '../components/MapWeatherLocal.jsx'
 import Heatmap from '../components/Heatmap.jsx';
 import { convertWeatherData, mergeWindData, normalizeToRange } from '../scripts/ConversionUtils.js'
 import { getWindDirection, getWindSpeed } from '../scripts/WeatherApi.js';
-import '../css/LocalWeather.css'
+import '../css/ViewWeatherByLocal.css'
 
 const ViewWeatherLocalByWind = () => {
 

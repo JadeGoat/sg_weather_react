@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
+import MapWeatherLocal from '../components/MapWeatherLocal.jsx'
+import Heatmap from '../components/Heatmap.jsx';
+import { convertWBGTData, normalizeToRange } from '../scripts/ConversionUtils.js'
 import { getWBGTObservations } from '../scripts/WeatherApi.js';
+import '../css/ViewWeatherByLocal.css'
 
 const ViewWeatherLocalByWBGT = () => {
 
     const [data, setData] = useState()
+    const [weatherData, setWeatherData] = useState()
+    const [heatmapPoints, setHeatmapPoints] = useState()
+    const [normalizedHeatmapPoints, setNormalizedHeatmapPoints] = useState()
 
     useEffect(() => {
         getWBGTObservations(setData)
@@ -11,13 +18,51 @@ const ViewWeatherLocalByWBGT = () => {
     
     useEffect(() => {
         if (data) {
-            console.log(data)
+            const results = convertWBGTData(data)
+            setWeatherData(results.location_data)
+            setHeatmapPoints(results.heatmap_data)
+            const normalizeData = normalizeToRange(results.heatmap_data)
+            setNormalizedHeatmapPoints(normalizeData)
+
+            //< 25	    Low	        Normal activity
+            //25–28	    Moderate	Increase hydration, monitor vulnerable individuals
+            //28–30	    High	    Shorten work/rest cycles, limit strenuous activity
         }
     }, [data]);
 
     return (
-        <div>
-            <div>Under Construction</div>
+        <div className='localWeatherContainer'>
+            <div>
+                <h2>Pins Map</h2>
+                { weatherData ?
+                    <MapWeatherLocal centerCoordinate={[1.3308, 103.8054]} 
+                                zoomValue={11}
+                                type="wbgt"
+                                weatherData={weatherData}/>:
+                    <p>Loading pins map...</p>
+                }
+            </div>
+            <div>
+                <h2>HeatMap</h2>
+                <div>
+                    <h4>Normalized values</h4>
+                    { normalizedHeatmapPoints ?
+                        <Heatmap centerCoordinate={[1.3308, 103.8054]} 
+                                zoomValue={11}
+                                heatmapCoordinates={normalizedHeatmapPoints}/>:
+                        <p>Loading heatmap...</p>
+                    }
+                </div>
+                <div>
+                    <h4>Raw values</h4>
+                    { heatmapPoints ?
+                        <Heatmap centerCoordinate={[1.3308, 103.8054]} 
+                                zoomValue={11}
+                                heatmapCoordinates={heatmapPoints}/>:
+                        <p>Loading heatmap...</p>
+                    }
+                </div>
+            </div>
         </div>
     )
 }
