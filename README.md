@@ -77,15 +77,19 @@ npm run dev
 1. Added Weather Map viewable by region's point of view
 
    <u>Cloud Map</u>
+
    ![Alt text](./images/sample_weather_cloud_map.png)
 
    <u>Precipitation Map</u>
+
    ![Alt text](./images/sample_weather_precipitation_map.png)
 
    <u>Temperature Map</u>
+
    ![Alt text](./images/sample_weather_temp_map.png)
 
    <u>Wind Speed Map</u>
+
    ![Alt text](./images/sample_weather_wind_map.png)
 
 2. Added Weather Map viewable by local's point of view using data from data.gov.sg (NEA). Map available in pins map and heatmap.
@@ -93,12 +97,15 @@ npm run dev
 3. Added normalized heatmap as the raw values are either to small or clamped together in a certain range.
    
    <u>Humidity Map</u>
+
    ![Alt text](./images/sample_weather_local_humidity.png)
 
    <u>Rainfall Map</u>
+
    ![Alt text](./images/sample_weather_local_rainfall.png)
 
    <u>Temperature Map</u>
+
    ![Alt text](./images/sample_weather_local_temperature.png)
 
 4. Modified wind direction to include arrow head instead of pins
@@ -111,12 +118,15 @@ npm run dev
 6. Added forecast for two hour, twenty-four hour and four day using data from data.gov.sg (NEA) 
 
    <u>Forecast 2 Hour</u>
+
    ![Alt text](./images/sample_weather_local_forecast_2hr.png)
 
    <u>Forecast 24 Hour</u>
+
    ![Alt text](./images/sample_weather_local_forecast_24hr.png)
 
    <u>Forecast 4 Days</u>
+
    ![Alt text](./images/sample_weather_local_forecast_4days.png)
 
 7. Added rolling text for flood alert using api from data.gov.sg (PUB)
@@ -124,8 +134,10 @@ npm run dev
 8. Added Weather Map viewable by safety using data from data.gov.sg (NEA) in both Wet Bulb Globe Temperature (WBGT) and Lightning observation
 
    <u>WBGT Observation Map</u>
+
    ![Alt text](./images/sample_weather_local_wgbt.png)
 
    <u>Lightning Observation Map</u>
+   
    ![Alt text](./images/sample_weather_local_lightning.png)
    
