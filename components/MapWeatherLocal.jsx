@@ -57,6 +57,10 @@ const MapWeatherLocal = ({ centerCoordinate, zoomValue, type, weatherData }) => 
             setLegendIconDescList(["High", "Moderate", "Low"])
             setLegendIconColorList(["-orange", "-green", ""])
         }
+        else if (type == "lightning") {
+            setLegendIconDescList(["Cloud-to-Ground", "Cloud-to-Cloud"])
+            setLegendIconColorList(["-orange", "-green"])
+        }
     }, [type]);
 
     useEffect(() => {

@@ -19,6 +19,19 @@ export function convertWBGTData(data) {
     return { location_data, heatmap_data }
 }
 
+export function convertLightningData(data) {
+    const readings = data['data']['records'][0]['item']['readings']
+    const location_data = readings.map((item, index) => ({ 
+                                                  id: index, 
+                                                  name: item.text, 
+                                                  value: item.type,
+                                                  lat: item.location.latitude,
+                                                  lon: item.location.longitude
+                                                }
+    ));
+    return location_data
+}
+
 export function convertWeatherData(data) {
 
     // Get the two list of the weather data
