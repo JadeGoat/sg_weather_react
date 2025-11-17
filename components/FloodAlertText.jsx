@@ -17,9 +17,8 @@ const FloodAlertText = () => {
     }, []);
 
     useEffect(() => {
-        console.log(data)
-        if (data) {
-            
+
+        if (data) {    
             const records = data["data"]["records"]
             
             // Extract alert from data
