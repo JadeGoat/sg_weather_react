@@ -140,4 +140,13 @@ npm run dev
    <u>Lightning Observation Map</u>
    
    ![Alt text](./images/sample_weather_local_lightning.png)
+
+9. Added addtional sub features in safety category using data from data.gov.sg (NEA) with air quality and ultraviolet index
    
+   <u>Air quality</u>
+
+   ![Alt text](./images/sample_weather_local_air_quality.png)
+
+   <u>Ultraviolet index</u>
+   
+   ![Alt text](./images/sample_weather_local_uv_index.png)

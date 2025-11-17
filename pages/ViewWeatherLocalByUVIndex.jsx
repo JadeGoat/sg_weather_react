@@ -22,7 +22,7 @@ const ViewWeatherLocalByUVIndex = ( ) => {
 
     return (
         <div>
-            <h2>Singapore Forecast</h2>
+            <h2>Ultraviolet Index</h2>
             <table border="1" cellPadding="8" style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                     <tr>
